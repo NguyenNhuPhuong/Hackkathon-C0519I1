@@ -7,12 +7,15 @@ import com.store.eating.service.FoodService;
 import com.store.eating.service.StoreSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 public class StoreController {
@@ -44,7 +47,11 @@ public class StoreController {
     }
 
     @PostMapping("store-create")
-    public ModelAndView save(@ModelAttribute("store") Store store) {
+    public ModelAndView save(@Validated @ModelAttribute("store") Store store, BindingResult bindingResult) {
+        if(bindingResult.hasFieldErrors()){
+            ModelAndView modelAndView = new ModelAndView("store/create");
+            return modelAndView;
+        }
         storeSerivce.save(store);
         ModelAndView modelAndView = new ModelAndView("store/create");
         modelAndView.addObject("store", new Store());
@@ -67,7 +74,11 @@ public class StoreController {
     }
 
     @PostMapping("store-edit")
-    public ModelAndView update(@ModelAttribute Store store) {
+    public ModelAndView update(@Validated @ModelAttribute Store store, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()){
+            ModelAndView modelAndView = new ModelAndView("store/edit");
+            return modelAndView;
+        }
         storeSerivce.save(store);
         ModelAndView modelAndView = new ModelAndView("store/edit");
         modelAndView.addObject("store", store);

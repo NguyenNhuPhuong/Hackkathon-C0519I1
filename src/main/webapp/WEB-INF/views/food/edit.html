@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Country</title>
+    <title>Edit Food</title>
 </head>
 <body>
 
-<h1> Edit Country</h1>
+<h1> Edit Food</h1>
 <p>
     <a href="/food"> Food List </a>
 </p>
@@ -23,6 +23,8 @@
     <tr>
         <label>Chef:</label>
         <label><input type="text" th:field="*{chef}"></label>
+        <td th:if="${#fields.hasErrors('chef')}" th:errors="*{chef}"></td>
+
     </tr>
     <tr>
         <input type="submit" value="Update">

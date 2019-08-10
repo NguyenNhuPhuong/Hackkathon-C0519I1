@@ -4,6 +4,10 @@ package com.store.eating.model;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import java.util.List;
 
 @Entity
@@ -15,9 +19,28 @@ class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
+    @Size(min = 3, max = 10)
     private String name;
 
-    private Integer phone;
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @NotNull
+    @Size(min=10,max = 10)
+    private String phone;
+
+    @NotEmpty
+    @Size(min = 10)
+    private String address;
+
+    @NotEmpty
+    private String email;
 
     public String getEmail() {
         return email;
@@ -46,9 +69,6 @@ class Store {
         this.address = address;
     }
 
-    private String address;
-
-    private String email;
 
     public String getDescription() {
         return description;
@@ -79,13 +99,7 @@ class Store {
         this.name = name;
     }
 
-    public Integer getPhone() {
-        return phone;
-    }
 
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
 
     @Override
     public String toString() {

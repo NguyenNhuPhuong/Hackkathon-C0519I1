@@ -1,11 +1,14 @@
 package com.store.eating.model;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
+
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Component
@@ -15,10 +18,13 @@ public class Food {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
+    @Size(min = 3)
     private String chef;
 
+    @NotEmpty
+    @Size(min = 5)
     private String name;
-
 
     public Long getId() {
         return id;
