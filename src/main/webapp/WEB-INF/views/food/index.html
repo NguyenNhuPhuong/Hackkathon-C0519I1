@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Food </title>
+</head>
+<body>
+<h1> Boad food </h1>
+<hr/>
+<p>
+    <a href="/food-create"> Create food</a>
+</p>
+<form>
+    <fieldset>
+        <legend> Food List</legend>
+        <table border="1">
+            <tr>
+                <td>#</td>
+                <td> Món Ăn</td>
+                <td> Chỉnh sửa</td>
+            </tr>
+            <th:block th:each="food : ${foods}">
+                <tr>
+                    <td></td>
+                    <td th:text="${food.name}"></td>
+                    <td><a th:href="@{/food-edit/__${food.id}__}"> Chỉnh sửa</a> |
+                        <a th:href="@{/food-delete/__${food.id}__}"> Xoá </a></td>
+                </tr>
+
+            </th:block>
+        </table>
+    </fieldset>
+</form>
+</body>
+</html>

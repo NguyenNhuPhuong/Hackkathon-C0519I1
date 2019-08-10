@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Food</title>
+</head>
+<body>
+<h1> Food Create </h1>
+<p>
+    <a href="/food"> Food List </a>
+</p>
+
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/food-create}" th:object="${food}" method="post">
+    <fieldset>
+        <legend> Create Food</legend>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}"></td>
+            </tr>
+            <tr>
+                <td>Chef:</td>
+                <td><input type="text" th:field="*{chef}"></td>
+            </tr>
+            <th>
+                <input type="submit" value="Save">
+            </th>
+        </table>
+    </fieldset>
+</form>
+</body>
+</html>

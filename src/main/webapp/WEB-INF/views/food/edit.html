@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Country</title>
+</head>
+<body>
+
+<h1> Edit Country</h1>
+<p>
+    <a href="/food"> Food List </a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/food-edit}" th:object="${food}" method="post">
+    <input type="hidden" name="id" th:field="*{id}">
+    <tr>
+        <label>Name:</label>
+        <label><input type="text" th:field="*{name}"></label>
+        <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+    </tr>
+    <tr>
+        <label>Chef:</label>
+        <label><input type="text" th:field="*{chef}"></label>
+    </tr>
+    <tr>
+        <input type="submit" value="Update">
+    </tr>
+</form>
+</body>
+</html>

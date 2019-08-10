@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Store </title>
+</head>
+<body>
+<h1> Boad store </h1>
+<hr/>
+<p>
+    <a href="/store-create"> Create Store</a>
+</p>
+<form>
+    <fieldset>
+        <legend> Store List</legend>
+        <table border="1">
+            <tr>
+                <td>#</td>
+                <td> Cửa Hàng </td>
+                <td> Món Ăn </td>
+                <td></td>
+            </tr>
+            <th:block th:each="store : ${stores}">
+                <tr>
+                    <td></td>
+                    <td th:text="${store.name}"></td>
+<!--                                        <td th:text="${city.country.name}"></td>-->
+                    <td><a th:href="@{/store-edit/__${store.id}__}"> Chỉnh sửa</a> |
+                        <a th:href="@{/store-delete/__${store.id}__}">Xoá </a></td>
+                </tr>
+
+            </th:block>
+        </table>
+    </fieldset>
+</form>
+</body>
+</html>

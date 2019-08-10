@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Store</title>
+</head>
+<body>
+<h1> Xoá thành </h1>
+<hr/>
+<p> Bạn có chắc xoá thành phố : <a th:text="${store.name}"></a></p>
+<form th:action="@{/store-delete}" th:object="${store}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <td><input type="submit" value="Xoá"> | <a href="/store"> Thoát </a></td>
+</form>
+</body>
+</html>
