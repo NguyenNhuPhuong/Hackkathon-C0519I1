@@ -24,7 +24,7 @@
             <td>Food:</td>
             <td>
                 <select th:field="*{foods}">
-                    <option th:each="p: ${food}" th:value="${p.id}" th:text="${p.name}"></option>
+                    <option th:each="p : ${food}" th:value="${p.id}" th:text="${p.name}"></option>
                 </select>
             </td>
         </tr>

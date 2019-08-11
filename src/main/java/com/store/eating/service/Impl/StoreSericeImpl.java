@@ -5,10 +5,13 @@ import com.store.eating.repository.StoreRepository;
 import com.store.eating.service.StoreSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
+
 public class StoreSericeImpl implements StoreSerivce {
 
     @Autowired
     private StoreRepository storeRepository;
+
 
     @Override
     public Iterable<Store> findAll() {

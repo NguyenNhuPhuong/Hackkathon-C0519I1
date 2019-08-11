@@ -6,15 +6,17 @@ import com.store.eating.model.Store;
 import com.store.eating.service.FoodService;
 import com.store.eating.service.StoreSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Optional;
 
 
 @Controller
@@ -26,10 +28,6 @@ public class StoreController {
     @Autowired
     private FoodService foodService;
 
-    @ModelAttribute("food")
-    public Iterable<Food> foods() {
-        return foodService.findAll();
-    }
 
     @GetMapping("store")
     public ModelAndView list() {
@@ -48,7 +46,7 @@ public class StoreController {
 
     @PostMapping("store-create")
     public ModelAndView save(@Validated @ModelAttribute("store") Store store, BindingResult bindingResult) {
-        if(bindingResult.hasFieldErrors()){
+        if (bindingResult.hasFieldErrors()) {
             ModelAndView modelAndView = new ModelAndView("store/create");
             return modelAndView;
         }
@@ -75,7 +73,7 @@ public class StoreController {
 
     @PostMapping("store-edit")
     public ModelAndView update(@Validated @ModelAttribute Store store, BindingResult bindingResult) {
-        if (bindingResult.hasFieldErrors()){
+        if (bindingResult.hasFieldErrors()) {
             ModelAndView modelAndView = new ModelAndView("store/edit");
             return modelAndView;
         }
