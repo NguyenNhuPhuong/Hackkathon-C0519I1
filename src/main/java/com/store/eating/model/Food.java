@@ -42,6 +42,16 @@ public class Food {
     @JoinColumn(name = "Store")
     private Store store;
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    private String price;
+
     public void setId(Long id) {
         this.id = id;
     }

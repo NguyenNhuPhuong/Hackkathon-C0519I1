@@ -16,15 +16,19 @@
 <form th:action="@{/food-edit}" th:object="${food}" method="post">
     <input type="hidden" name="id" th:field="*{id}">
     <tr>
-        <label>Name:</label>
-        <label><input type="text" th:field="*{name}"></label>
-        <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+        <td>Name:</td>
+        <td><input type="text" th:field="*{name}"></td>
+        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
     </tr>
     <tr>
-        <label>Chef:</label>
-        <label><input type="text" th:field="*{chef}"></label>
+        <td>Chef:</td>
+        <td><input type="text" th:field="*{chef}"></td>
         <td th:if="${#fields.hasErrors('chef')}" th:errors="*{chef}"></td>
-
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td><input type="text" th:field="*{price}"></td>
+        <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></td>
     </tr>
     <tr>
         <input type="submit" value="Update">
